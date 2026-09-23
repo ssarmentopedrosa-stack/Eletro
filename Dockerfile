@@ -28,8 +28,8 @@ FROM node:22-bookworm-slim AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
-# Porta padrão utilizada por containers e Cloud Run (injetada via PORT)
-ENV PORT=8080
+# Porta padrão utilizada pelo servidor Express (configurável via PORT)
+ENV PORT=3000
 
 # Dependências estritamente de produção para pacotes externalizados
 COPY package.json package-lock.json* ./
@@ -42,7 +42,7 @@ COPY --from=builder /app/dist ./dist
 RUN mkdir -p /app/data
 
 # Exposição da porta de rede
-EXPOSE 8080
+EXPOSE 3000
 
 # Inicialização do backend Express autoritativo
-CMD ["node", "dist/server.cjs"]
+CMD ["npm", "start"]

@@ -147,7 +147,7 @@ async function startServer() {
 
   // Configuração de CORS para permitir requisições do frontend Vercel e ambientes locais
   const allowedOrigins = [
-    'https://missao-circuitos-eletricos.vercel.app',
+    'https://eletro-zeta.vercel.app',
     'http://localhost:3000',
     'http://localhost:5173',
   ];
@@ -160,7 +160,7 @@ async function startServer() {
     if (origin) {
       const isAllowed =
         allowedOrigins.includes(origin) ||
-        /^https:\/\/missao-circuitos-eletricos.*\.vercel\.app$/.test(origin);
+        /^https:\/\/eletro-.*\.vercel\.app$/.test(origin);
 
       if (isAllowed) {
         res.setHeader('Access-Control-Allow-Origin', origin);
